@@ -1,3 +1,80 @@
-* {
-  background-color: red;
+#calculator {
+  width: 400px;
+  height: 800px;
+}
+
+.button {
+  background-color: #63cf63;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+  color: white;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-family: "Lucida Grande";
+
+}
+
+#divide, #multiply, #minus, #plus {
+  background-color: #9de19d;
+  color: grey;
+}
+
+#divide:hover, #multiply:hover, #minus:hover, #plus:hover {
+    color: white;
+}
+
+#row-0 {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#c {
+  width: 25%;
+  height: 102px;
+}
+
+#c:hover {
+    background-color: #9de19d;
+}
+
+#equals:hover {
+    background-color: #9de19d;
+}
+
+#cal-display-container {
+  width: 75%;
+  height: 100px;
+  background-color: #63cf63;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#cal-display {
+  margin-right: 40px;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: "Lucida Grande";
+  font-size: 25px;
+}
+
+#cal-display > p {
+  margin: 0px;
+}
+
+#row-1, #row-2, #row-3, #row-4 {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#row-1 > *, #row-2 > *, #row-3 > *, #row-4 > *{
+  width: 25%;
 }
