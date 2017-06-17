@@ -29,7 +29,7 @@ function handleOperation(operation){
   ||(inputArray[inputArray.length-1] === '-'))){
     if(inputArray.length !== 0){
       inputArray.push(operation);
-      clearDisplay();
+      displayInput(operation);
       inputString = "";
     }
   }
