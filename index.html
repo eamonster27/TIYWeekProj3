@@ -7,38 +7,31 @@
   </head>
   <body>
     <form id="calculator" action="index.html" method="post">
-
       <div id="row-0">
         <input type="button" onclick="handleClear()" class="button" id="c" name="c" value="C">
         <div id="cal-display-container">
           <div id="cal-display">
-            <!-- Append inputs here as <p>. -->
           </div>
         </div>
       </div>
-
       <div id="row-1">
         <input type="button" onclick="handleDigit(7)" class="button" class="digit" id="seven" name="digit" value="7">
         <input type="button" onclick="handleDigit(8)" class="button" class="digit" id="eight" name="digit" value="8">
         <input type="button" onclick="handleDigit(9)" class="button" class="digit" id="nine" name="digit" value="9">
         <input type="button" onclick="handleOperation('/')" class="button" id="divide" name="divide" value="/">
       </div>
-
       <div id="row-2">
         <input type="button" onclick="handleDigit(4)" class="button" class="digit" id="four" name="digit" value="4">
         <input type="button" onclick="handleDigit(5)" class="button" class="digit" id="five" name="digit" value="5">
         <input type="button" onclick="handleDigit(6)" class="button" class="digit" id="six" name="digit" value="6">
         <input type="button" onclick="handleOperation('*')" class="button" id="multiply" name="multiply" value="*">
       </div>
-
       <div id="row-3">
-
         <input type="button" onclick="handleDigit(1)" class="button" class="digit" id="one" name="digit" value="1">
         <input type="button" onclick="handleDigit(2)" class="button" class="digit" id="two" name="digit" value="2">
         <input type="button" onclick="handleDigit(3)" class="button" class="digit" id="three" name="digit" value="3">
         <input type="button" onclick="handleOperation('-')" class="button" id="minus" name="minus" value="-">
       </div>
-
       <div id="row-4">
         <input type="button" onclick="handleDigit(0)" class="button" class="digit" id="zero" name="digit" value="0">
         <input type="button" class="button" id="point" name="point" value=".">
@@ -46,8 +39,6 @@
         <input type="button" onclick="handleOperation('+')" class="button" id="plus" name="plus" value="+">
       </div>
     </form>
-
-
     <script src="main.js" type="text/javascript"></script>
   </body>
 </html>

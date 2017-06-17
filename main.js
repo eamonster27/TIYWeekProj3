@@ -1,32 +1,9 @@
-
-
-
-
-// var calButton = document.querySelectorAll(".button");
-// for(let i = 0; i < calButton.length; ++i){
-//   calButton[i].addEventListener("click", processButtonInput);
-// }
-
-// const html = `
-//   <p>${inputDigit}</p>
-// `
-// document.querySelector('#cal-display').insertAdjacentHTML('afterend', html);
-
-//Special characters complete array element input and increase index.
-//Special characters are stored in array as well.
-//Equals computes contents of array with respect to pemdas.
-//Stores left, right, and operation. On location of * or /, executes operation, stores in right, right becomes left, operation becomes next operatir, right becomes next value, then continue parse.
-// function processButtonInput(){
-//   console.log("Event listener works!");
-//
-// }
-
 var inputArray = [];
 var inputString = "";
+var decimal = false;
 
 function handleDigit(digit){
   inputString = inputString + digit;
-  console.log(inputString);//---------------------Testing
   displayInput(digit);
 }
 
@@ -34,23 +11,28 @@ function handleOperation(operation){
   if(inputString !== ""){
     inputArray.push(inputString);
   }
-  if(!((inputArray[inputArray.length-1] === '*') ||(inputArray[inputArray.length-1] === '/') ||(inputArray[inputArray.length-1] === '+') ||(inputArray[inputArray.length-1] === '-'))
-  && (inputArray.length !== 0)){
-    console.log(operation);//---------------------Testing
-    inputArray.push(operation);
-    clearDisplay();
-    inputString = "";
-    console.log(inputArray);//---------------------Testing
+  if(!((inputArray[inputArray.length-1] === '*')
+  ||(inputArray[inputArray.length-1] === '/')
+  ||(inputArray[inputArray.length-1] === '+')
+  ||(inputArray[inputArray.length-1] === '-'))){
+    if(inputArray.length !== 0){
+      inputArray.push(operation);
+      clearDisplay();
+      inputString = "";
+    }
+  }
+  else {
+    inputArray[inputArray.length-1] = operation;
   }
 }
 
 function handleEquals(){
-  if(inputString !== ""){
+  if((inputString !== "")
+  && (inputString !== inputArray[inputArray.length-1])){
     inputArray.push(inputString);
-    console.log(inputArray);//---------------------Testing
-
+    clearDisplay();
+    computeArray(inputArray);
   }
-  //Clear and update display input.
 }
 
 function handleClear(){
@@ -64,10 +46,55 @@ function clearDisplay(){
   calDisplay.textContent = "";
 }
 
-
 function displayInput(input){
   const html = `
     <p>${input}</p>
   `
   document.querySelector('#cal-display').insertAdjacentHTML('beforeend', html);
+}
+
+function computeArray(array){
+  var operation;
+  var left;
+  var right;
+
+  for(let i = 0; i < array.length; i+=2){
+    if((i%2) === 0){
+      left = array[i] * 1;
+      operation = array[i+1];
+      right = array[i+2] * 1;
+
+      if(operation === "*"){
+        array[i] = left * right;
+        array.splice(i+1, 2);
+        i-=2;
+      }
+      else if(operation === "/"){
+        array[i] = left / right;
+        array.splice(i+1, 2);
+        i-=2;
+      }
+    }
+  }
+  for(let j = 0; j < array.length; j+=2){
+    if((j%2) === 0){
+      left = array[j] * 1;
+      operation = array[j+1];
+      right = array[j+2] * 1;
+
+      if(operation === "+"){
+        array[j] = left + right;
+        array.splice(j+1, 2);
+        j-=2;
+      }
+      else if(operation === "-"){
+        array[j] = left - right;
+        array.splice(j+1, 2);
+        j-=2;
+      }
+    }
+  }
+  displayInput(array[0]);
+  inputString = array[0].toString();
+  inputArray.splice(0,1);
 }
