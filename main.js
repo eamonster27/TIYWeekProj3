@@ -14,8 +14,6 @@ function handleDigit(digit){
     inputString = inputString + digit;
     displayInput(digit);
   }
-
-
 }
 
 function handleOperation(operation){
@@ -109,4 +107,5 @@ function computeArray(array){
   displayInput(array[0]);
   inputString = array[0].toString();
   inputArray.splice(0,1);
+  decimal = true;
 }
