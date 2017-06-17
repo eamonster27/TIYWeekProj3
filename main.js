@@ -3,13 +3,25 @@ var inputString = "";
 var decimal = false;
 
 function handleDigit(digit){
-  inputString = inputString + digit;
-  displayInput(digit);
+  if(!decimal){
+    if(digit === '.'){
+      decimal = true;
+    }
+    inputString = inputString + digit;
+    displayInput(digit);
+  }
+  else if(digit !== '.'){
+    inputString = inputString + digit;
+    displayInput(digit);
+  }
+
+
 }
 
 function handleOperation(operation){
   if(inputString !== ""){
     inputArray.push(inputString);
+    decimal = false;
   }
   if(!((inputArray[inputArray.length-1] === '*')
   ||(inputArray[inputArray.length-1] === '/')
